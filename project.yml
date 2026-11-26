@@ -98,7 +98,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSExtension:
-          NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-configuration-extension
+          NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-configuration-service
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShieldConfigurationExtension
     entitlements:
       path: LockItShield/LockItShield.entitlements
