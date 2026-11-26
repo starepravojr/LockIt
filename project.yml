@@ -1,0 +1,112 @@
+# Source of truth for LockIt.xcodeproj. After editing, run: xcodegen generate
+name: LockIt
+
+options:
+  bundleIdPrefix: com.starepravo
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: QB4QW8YQ5A
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  LockIt:
+    type: application
+    platform: iOS
+    sources:
+      - path: LockIt
+    info:
+      path: LockIt/Support/Info.plist
+      properties:
+        CFBundleDisplayName: LockIt
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NFCReaderUsageDescription: LockIt reads your Brick card to lock and unlock apps.
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        ITSAppUsesNonExemptEncryption: false
+    entitlements:
+      path: LockIt/Support/LockIt.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.developer.nfc.readersession.formats:
+          - TAG
+        com.apple.security.application-groups:
+          - group.com.starepravo.lockit
+    dependencies:
+      - target: LockItMonitor
+      - target: LockItShield
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.starepravo.lockit
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+
+  # Woken by iOS at the start and end of each schedule. It shares the models
+  # and the services below with the app, so both brick in the same way.
+  LockItMonitor:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: LockItMonitor
+      - path: LockIt/App/AppConfig.swift
+      - path: LockIt/Models
+      - path: LockIt/Services/SharedStore.swift
+      - path: LockIt/Services/BlockingService.swift
+      - path: LockIt/Services/BrickSessionService.swift
+      - path: LockIt/Services/StateChangeSignal.swift
+    info:
+      path: LockItMonitor/Info.plist
+      properties:
+        CFBundleDisplayName: LockIt Monitor
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.deviceactivity.monitor-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).DeviceActivityMonitorExtension
+    entitlements:
+      path: LockItMonitor/LockItMonitor.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups:
+          - group.com.starepravo.lockit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.starepravo.lockit.monitor
+        TARGETED_DEVICE_FAMILY: "1"
+
+  # Draws the screen shown over a blocked app or website.
+  LockItShield:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: LockItShield
+    info:
+      path: LockItShield/Info.plist
+      properties:
+        CFBundleDisplayName: LockIt Shield
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-configuration-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShieldConfigurationExtension
+    entitlements:
+      path: LockItShield/LockItShield.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups:
+          - group.com.starepravo.lockit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.starepravo.lockit.shield
+        TARGETED_DEVICE_FAMILY: "1"

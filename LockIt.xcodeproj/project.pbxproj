@@ -1,0 +1,711 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		042D5BB4982B268AD61D9580 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F214888230F9BDEE89745 /* SessionLog.swift */; };
+		060E24BADD9AA9BFC04AF76F /* BrickSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4099F3CA95FEE2E71AF44A82 /* BrickSessionService.swift */; };
+		0A68E4671A49A4C5B94005DC /* ModeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359195D3F49CE11A8B1E99F7 /* ModeEditorView.swift */; };
+		0AD0FE2112AEAF4A809FB6A8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9676E772E58504C740E4AF /* HomeView.swift */; };
+		0B7E77C1B35D54BC55EB49D6 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD647C0EB623542DA8B3471D /* AppConfig.swift */; };
+		0E6DBF9303DD6D5057CEEF71 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5490C32D9624B003B5054838 /* OnboardingView.swift */; };
+		18E2A6C7B8FA352F954F3C9C /* SessionStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299E5F83F75A2C75A3D58AB0 /* SessionStats.swift */; };
+		26D4A2DEDD12024D3F59B7A7 /* ShieldConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446A4AB0E660252F49FE5FB /* ShieldConfigurationExtension.swift */; };
+		275FBD82986D026CE4E2377E /* BrickSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06770453B795A491FD1B2567 /* BrickSchedule.swift */; };
+		2874002FC13BE67A72F53D9C /* BrickState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63D160FFB2B7CCFEB22F286 /* BrickState.swift */; };
+		2E55AA2712E243E365DD9F78 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BAF62E23234B0436EC847A /* SharedStore.swift */; };
+		358EF4BF51F82E64BD4560C7 /* BlockingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FCD75317F00C27B0A3275C /* BlockingService.swift */; };
+		36F86867930CFA5E6D7FCCA2 /* BrickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FC82466EDB26115BD536CC /* BrickMode.swift */; };
+		43750B80F4B37EF7A1CF215A /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88787923735FBFBCB6E6276 /* KeychainStore.swift */; };
+		43BE984C26EC711930A641C0 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD647C0EB623542DA8B3471D /* AppConfig.swift */; };
+		49518404968EDE61F3B172E7 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BE334FCFFFA40C67AD381 /* StatsView.swift */; };
+		4992852CBA960F8F2DC6C7F4 /* LockItShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9C44AFC7B284D7724F7362B7 /* LockItShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4E9B05E6619CA5E8419A9038 /* LockItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C33330369A6979D10964550 /* LockItApp.swift */; };
+		550F2102A4872BBDE9DAFE24 /* BrickSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4099F3CA95FEE2E71AF44A82 /* BrickSessionService.swift */; };
+		62BD8996373628467CE22A70 /* SchedulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C550BF538EA7822C3762EF /* SchedulesView.swift */; };
+		6BA5C4DA786BB62CDBFD85D8 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEE7ACE5019756BCAC8095 /* ErrorAlert.swift */; };
+		6C891BD1EBE4CA8A66515292 /* LockItMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5F4B620093FF30A0E0B9B8E2 /* LockItMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6D8BCC800DB0D8F858F2B994 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BAF62E23234B0436EC847A /* SharedStore.swift */; };
+		7A99146043D2B9A76C2F1608 /* BrickState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63D160FFB2B7CCFEB22F286 /* BrickState.swift */; };
+		7FDEF89E988A6A82862F21A1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B153ED92A456892ED81995C9 /* RootView.swift */; };
+		8DEBE8732C55E4564E91F043 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E73DA172472E9163A196DF /* AppModel.swift */; };
+		948909B27B6D7B7FBC345AEC /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C8B60299917FEF922DA0A /* DeviceActivityMonitorExtension.swift */; };
+		94ACC4C994ADC669ACDF5723 /* BlockingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FCD75317F00C27B0A3275C /* BlockingService.swift */; };
+		A530221A2168019D25E56160 /* BrickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FC82466EDB26115BD536CC /* BrickMode.swift */; };
+		AF202F2D0DAF8DB707F44685 /* BrickSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06770453B795A491FD1B2567 /* BrickSchedule.swift */; };
+		B5B6817B74C98CC459680A78 /* StateChangeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E840079118CC98667D16A3 /* StateChangeSignal.swift */; };
+		BCCE40882759E8A5C62EDE08 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86D2B6BFBC016E9B7024023 /* AuthorizationService.swift */; };
+		C28336C252F16F8607219D83 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E55C6845E82E6A4F97748 /* AppSettings.swift */; };
+		C5E06D3C61AE0FA36CB56F3C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56204CCBB363B9D1ADE4BE63 /* SettingsView.swift */; };
+		CA256B46F8710CE3AFCB74AC /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2019DCB2AA1B43FB7435B7 /* ScheduleService.swift */; };
+		CEC28D83ACA622A711741422 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E55C6845E82E6A4F97748 /* AppSettings.swift */; };
+		CF6E05EEC4C741566B8931E2 /* StateChangeSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E840079118CC98667D16A3 /* StateChangeSignal.swift */; };
+		DA9B35F9664567E1B07ED6FF /* ModesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626141E7F5502BD10EA80E4E /* ModesView.swift */; };
+		DF587D0573642167B91254D6 /* NFCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD53EDCC110D7ED3BA46DBB /* NFCService.swift */; };
+		DFD18D72191A5133B7ABA034 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0F214888230F9BDEE89745 /* SessionLog.swift */; };
+		F95ABE33E15A6537137A77F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30451E4E79771083F91AD8C5 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		862E49D4DF7E9F886B602396 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D997E0C1C4F3504A673C7455 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83FCC2ADA7CBD9412A36A170;
+			remoteInfo = LockItMonitor;
+		};
+		F13DA646C7092C12F97A1DDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D997E0C1C4F3504A673C7455 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 54C6F32DB792AC64CABA45E3;
+			remoteInfo = LockItShield;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		28D686AF58DF4D48DC96F9D2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6C891BD1EBE4CA8A66515292 /* LockItMonitor.appex in Embed Foundation Extensions */,
+				4992852CBA960F8F2DC6C7F4 /* LockItShield.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		026C702CD6921E733BF31024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		06770453B795A491FD1B2567 /* BrickSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickSchedule.swift; sourceTree = "<group>"; };
+		0BB7AFF3803178EE1A52E017 /* LockIt.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LockIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		299E5F83F75A2C75A3D58AB0 /* SessionStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStats.swift; sourceTree = "<group>"; };
+		2C33330369A6979D10964550 /* LockItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockItApp.swift; sourceTree = "<group>"; };
+		30451E4E79771083F91AD8C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		359195D3F49CE11A8B1E99F7 /* ModeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeEditorView.swift; sourceTree = "<group>"; };
+		3E2EFE998B0039DD4B99237E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4099F3CA95FEE2E71AF44A82 /* BrickSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickSessionService.swift; sourceTree = "<group>"; };
+		450C38A5FDDD8CBE5EF618C1 /* LockIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockIt.entitlements; sourceTree = "<group>"; };
+		4E9676E772E58504C740E4AF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		538C8B60299917FEF922DA0A /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
+		5490C32D9624B003B5054838 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		54FCD75317F00C27B0A3275C /* BlockingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingService.swift; sourceTree = "<group>"; };
+		56204CCBB363B9D1ADE4BE63 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5C0E55C6845E82E6A4F97748 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		5D2019DCB2AA1B43FB7435B7 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
+		5F4B620093FF30A0E0B9B8E2 /* LockItMonitor.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LockItMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		626141E7F5502BD10EA80E4E /* ModesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModesView.swift; sourceTree = "<group>"; };
+		69BAF62E23234B0436EC847A /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
+		6E840F1DB41B24F4CD7D292F /* LockItMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockItMonitor.entitlements; sourceTree = "<group>"; };
+		82E840079118CC98667D16A3 /* StateChangeSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateChangeSignal.swift; sourceTree = "<group>"; };
+		85D39F16295F465403B8C1FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		89AEE7ACE5019756BCAC8095 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		8DD53EDCC110D7ED3BA46DBB /* NFCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCService.swift; sourceTree = "<group>"; };
+		9C44AFC7B284D7724F7362B7 /* LockItShield.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LockItShield.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2C550BF538EA7822C3762EF /* SchedulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesView.swift; sourceTree = "<group>"; };
+		A63D160FFB2B7CCFEB22F286 /* BrickState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickState.swift; sourceTree = "<group>"; };
+		AD647C0EB623542DA8B3471D /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		B026F8BA35475C297E1BADC7 /* LockItShield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockItShield.entitlements; sourceTree = "<group>"; };
+		B153ED92A456892ED81995C9 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		B32BE334FCFFFA40C67AD381 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		C446A4AB0E660252F49FE5FB /* ShieldConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldConfigurationExtension.swift; sourceTree = "<group>"; };
+		C4FC82466EDB26115BD536CC /* BrickMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickMode.swift; sourceTree = "<group>"; };
+		D3E73DA172472E9163A196DF /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		D86D2B6BFBC016E9B7024023 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
+		E88787923735FBFBCB6E6276 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		ED0F214888230F9BDEE89745 /* SessionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2012C467272438A67682F365 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AD647C0EB623542DA8B3471D /* AppConfig.swift */,
+				D3E73DA172472E9163A196DF /* AppModel.swift */,
+				2C33330369A6979D10964550 /* LockItApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3E020D7F8692BDB5452307A7 /* LockItShield */ = {
+			isa = PBXGroup;
+			children = (
+				026C702CD6921E733BF31024 /* Info.plist */,
+				B026F8BA35475C297E1BADC7 /* LockItShield.entitlements */,
+				C446A4AB0E660252F49FE5FB /* ShieldConfigurationExtension.swift */,
+			);
+			path = LockItShield;
+			sourceTree = "<group>";
+		};
+		7879134C503E871D519668F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C0E55C6845E82E6A4F97748 /* AppSettings.swift */,
+				C4FC82466EDB26115BD536CC /* BrickMode.swift */,
+				06770453B795A491FD1B2567 /* BrickSchedule.swift */,
+				A63D160FFB2B7CCFEB22F286 /* BrickState.swift */,
+				ED0F214888230F9BDEE89745 /* SessionLog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		81B829410279780519094227 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D86D2B6BFBC016E9B7024023 /* AuthorizationService.swift */,
+				54FCD75317F00C27B0A3275C /* BlockingService.swift */,
+				4099F3CA95FEE2E71AF44A82 /* BrickSessionService.swift */,
+				E88787923735FBFBCB6E6276 /* KeychainStore.swift */,
+				8DD53EDCC110D7ED3BA46DBB /* NFCService.swift */,
+				5D2019DCB2AA1B43FB7435B7 /* ScheduleService.swift */,
+				299E5F83F75A2C75A3D58AB0 /* SessionStats.swift */,
+				69BAF62E23234B0436EC847A /* SharedStore.swift */,
+				82E840079118CC98667D16A3 /* StateChangeSignal.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		987AD12103D793B8A2E27879 /* LockItMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				538C8B60299917FEF922DA0A /* DeviceActivityMonitorExtension.swift */,
+				85D39F16295F465403B8C1FF /* Info.plist */,
+				6E840F1DB41B24F4CD7D292F /* LockItMonitor.entitlements */,
+			);
+			path = LockItMonitor;
+			sourceTree = "<group>";
+		};
+		AD32661CC9D30E6C331031A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30451E4E79771083F91AD8C5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE65EF5FA8849E33FA28DAF4 = {
+			isa = PBXGroup;
+			children = (
+				DABA2A18952287FBD76E1403 /* LockIt */,
+				987AD12103D793B8A2E27879 /* LockItMonitor */,
+				3E020D7F8692BDB5452307A7 /* LockItShield */,
+				D97BBB57FDB7D1F3DAEB25A5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C485349C4E7223D263954A1B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3E2EFE998B0039DD4B99237E /* Info.plist */,
+				450C38A5FDDD8CBE5EF618C1 /* LockIt.entitlements */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D97BBB57FDB7D1F3DAEB25A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0BB7AFF3803178EE1A52E017 /* LockIt.app */,
+				5F4B620093FF30A0E0B9B8E2 /* LockItMonitor.appex */,
+				9C44AFC7B284D7724F7362B7 /* LockItShield.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DABA2A18952287FBD76E1403 /* LockIt */ = {
+			isa = PBXGroup;
+			children = (
+				2012C467272438A67682F365 /* App */,
+				7879134C503E871D519668F4 /* Models */,
+				AD32661CC9D30E6C331031A6 /* Resources */,
+				81B829410279780519094227 /* Services */,
+				C485349C4E7223D263954A1B /* Support */,
+				FD679DEEA73F80EF083C8FA3 /* Views */,
+			);
+			path = LockIt;
+			sourceTree = "<group>";
+		};
+		FD679DEEA73F80EF083C8FA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89AEE7ACE5019756BCAC8095 /* ErrorAlert.swift */,
+				4E9676E772E58504C740E4AF /* HomeView.swift */,
+				359195D3F49CE11A8B1E99F7 /* ModeEditorView.swift */,
+				626141E7F5502BD10EA80E4E /* ModesView.swift */,
+				5490C32D9624B003B5054838 /* OnboardingView.swift */,
+				B153ED92A456892ED81995C9 /* RootView.swift */,
+				A2C550BF538EA7822C3762EF /* SchedulesView.swift */,
+				56204CCBB363B9D1ADE4BE63 /* SettingsView.swift */,
+				B32BE334FCFFFA40C67AD381 /* StatsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		156328E4C880F5F620B426F1 /* LockIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56B283AE12EF852CE6F6F0E /* Build configuration list for PBXNativeTarget "LockIt" */;
+			buildPhases = (
+				BB67B0659AFE7B9189D12143 /* Sources */,
+				C7C6FC725997FAA9B5AAB92E /* Resources */,
+				28D686AF58DF4D48DC96F9D2 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8D14157A2436F473688E330 /* PBXTargetDependency */,
+				505DC64F7CDB3B94EE40374D /* PBXTargetDependency */,
+			);
+			name = LockIt;
+			packageProductDependencies = (
+			);
+			productName = LockIt;
+			productReference = 0BB7AFF3803178EE1A52E017 /* LockIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54C6F32DB792AC64CABA45E3 /* LockItShield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216E07D7820FC01BBB1F7FD9 /* Build configuration list for PBXNativeTarget "LockItShield" */;
+			buildPhases = (
+				8D5C99ECA68ACD25E3C00F83 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockItShield;
+			packageProductDependencies = (
+			);
+			productName = LockItShield;
+			productReference = 9C44AFC7B284D7724F7362B7 /* LockItShield.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		83FCC2ADA7CBD9412A36A170 /* LockItMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 491E299FB6DEAEB60EA42FB0 /* Build configuration list for PBXNativeTarget "LockItMonitor" */;
+			buildPhases = (
+				0647517A1D2FD1C82121DB8F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockItMonitor;
+			packageProductDependencies = (
+			);
+			productName = LockItMonitor;
+			productReference = 5F4B620093FF30A0E0B9B8E2 /* LockItMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D997E0C1C4F3504A673C7455 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					156328E4C880F5F620B426F1 = {
+						DevelopmentTeam = QB4QW8YQ5A;
+						ProvisioningStyle = Automatic;
+					};
+					54C6F32DB792AC64CABA45E3 = {
+						DevelopmentTeam = QB4QW8YQ5A;
+						ProvisioningStyle = Automatic;
+					};
+					83FCC2ADA7CBD9412A36A170 = {
+						DevelopmentTeam = QB4QW8YQ5A;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 22062AA93346D2676C2CA9DD /* Build configuration list for PBXProject "LockIt" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = BE65EF5FA8849E33FA28DAF4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D97BBB57FDB7D1F3DAEB25A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				156328E4C880F5F620B426F1 /* LockIt */,
+				83FCC2ADA7CBD9412A36A170 /* LockItMonitor */,
+				54C6F32DB792AC64CABA45E3 /* LockItShield */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7C6FC725997FAA9B5AAB92E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F95ABE33E15A6537137A77F6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0647517A1D2FD1C82121DB8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43BE984C26EC711930A641C0 /* AppConfig.swift in Sources */,
+				CEC28D83ACA622A711741422 /* AppSettings.swift in Sources */,
+				94ACC4C994ADC669ACDF5723 /* BlockingService.swift in Sources */,
+				A530221A2168019D25E56160 /* BrickMode.swift in Sources */,
+				AF202F2D0DAF8DB707F44685 /* BrickSchedule.swift in Sources */,
+				060E24BADD9AA9BFC04AF76F /* BrickSessionService.swift in Sources */,
+				2874002FC13BE67A72F53D9C /* BrickState.swift in Sources */,
+				948909B27B6D7B7FBC345AEC /* DeviceActivityMonitorExtension.swift in Sources */,
+				DFD18D72191A5133B7ABA034 /* SessionLog.swift in Sources */,
+				6D8BCC800DB0D8F858F2B994 /* SharedStore.swift in Sources */,
+				B5B6817B74C98CC459680A78 /* StateChangeSignal.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5C99ECA68ACD25E3C00F83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26D4A2DEDD12024D3F59B7A7 /* ShieldConfigurationExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB67B0659AFE7B9189D12143 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B7E77C1B35D54BC55EB49D6 /* AppConfig.swift in Sources */,
+				8DEBE8732C55E4564E91F043 /* AppModel.swift in Sources */,
+				C28336C252F16F8607219D83 /* AppSettings.swift in Sources */,
+				BCCE40882759E8A5C62EDE08 /* AuthorizationService.swift in Sources */,
+				358EF4BF51F82E64BD4560C7 /* BlockingService.swift in Sources */,
+				36F86867930CFA5E6D7FCCA2 /* BrickMode.swift in Sources */,
+				275FBD82986D026CE4E2377E /* BrickSchedule.swift in Sources */,
+				550F2102A4872BBDE9DAFE24 /* BrickSessionService.swift in Sources */,
+				7A99146043D2B9A76C2F1608 /* BrickState.swift in Sources */,
+				6BA5C4DA786BB62CDBFD85D8 /* ErrorAlert.swift in Sources */,
+				0AD0FE2112AEAF4A809FB6A8 /* HomeView.swift in Sources */,
+				43750B80F4B37EF7A1CF215A /* KeychainStore.swift in Sources */,
+				4E9B05E6619CA5E8419A9038 /* LockItApp.swift in Sources */,
+				0A68E4671A49A4C5B94005DC /* ModeEditorView.swift in Sources */,
+				DA9B35F9664567E1B07ED6FF /* ModesView.swift in Sources */,
+				DF587D0573642167B91254D6 /* NFCService.swift in Sources */,
+				0E6DBF9303DD6D5057CEEF71 /* OnboardingView.swift in Sources */,
+				7FDEF89E988A6A82862F21A1 /* RootView.swift in Sources */,
+				CA256B46F8710CE3AFCB74AC /* ScheduleService.swift in Sources */,
+				62BD8996373628467CE22A70 /* SchedulesView.swift in Sources */,
+				042D5BB4982B268AD61D9580 /* SessionLog.swift in Sources */,
+				18E2A6C7B8FA352F954F3C9C /* SessionStats.swift in Sources */,
+				C5E06D3C61AE0FA36CB56F3C /* SettingsView.swift in Sources */,
+				2E55AA2712E243E365DD9F78 /* SharedStore.swift in Sources */,
+				CF6E05EEC4C741566B8931E2 /* StateChangeSignal.swift in Sources */,
+				49518404968EDE61F3B172E7 /* StatsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		505DC64F7CDB3B94EE40374D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 54C6F32DB792AC64CABA45E3 /* LockItShield */;
+			targetProxy = F13DA646C7092C12F97A1DDE /* PBXContainerItemProxy */;
+		};
+		E8D14157A2436F473688E330 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83FCC2ADA7CBD9412A36A170 /* LockItMonitor */;
+			targetProxy = 862E49D4DF7E9F886B602396 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3CABB6342FEE289391AD39A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockItShield/LockItShield.entitlements;
+				INFOPLIST_FILE = LockItShield/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit.shield;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		50396A27996E492AB245B33E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LockIt/Support/LockIt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LockIt/Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6BDDBA896688932B98A9A4E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LockIt/Support/LockIt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LockIt/Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B13A85456C7AE1E7D36C0589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QB4QW8YQ5A;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B5014E9245173BC788D9CEA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = QB4QW8YQ5A;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C8E9638C9B75050A5A874862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockItShield/LockItShield.entitlements;
+				INFOPLIST_FILE = LockItShield/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit.shield;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E0BEB06BDA6A31F151201D40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockItMonitor/LockItMonitor.entitlements;
+				INFOPLIST_FILE = LockItMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit.monitor;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E679B29DA42F509FA53F1155 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LockItMonitor/LockItMonitor.entitlements;
+				INFOPLIST_FILE = LockItMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.starepravo.lockit.monitor;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		216E07D7820FC01BBB1F7FD9 /* Build configuration list for PBXNativeTarget "LockItShield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CABB6342FEE289391AD39A1 /* Debug */,
+				C8E9638C9B75050A5A874862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		22062AA93346D2676C2CA9DD /* Build configuration list for PBXProject "LockIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5014E9245173BC788D9CEA9 /* Debug */,
+				B13A85456C7AE1E7D36C0589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		491E299FB6DEAEB60EA42FB0 /* Build configuration list for PBXNativeTarget "LockItMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0BEB06BDA6A31F151201D40 /* Debug */,
+				E679B29DA42F509FA53F1155 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B56B283AE12EF852CE6F6F0E /* Build configuration list for PBXNativeTarget "LockIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50396A27996E492AB245B33E /* Debug */,
+				6BDDBA896688932B98A9A4E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D997E0C1C4F3504A673C7455 /* Project object */;
+}
