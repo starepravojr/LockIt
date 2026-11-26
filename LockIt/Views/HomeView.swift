@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The bricked / unbricked state, the time since bricking, the mode chooser,
+/// The locked / unlocked state, the time since locking, the mode chooser,
 /// and the one button that starts a card scan.
 struct HomeView: View {
     @Environment(AppModel.self) private var model
@@ -11,31 +11,31 @@ struct HomeView: View {
     @State private var isScanning = false
     @State private var errorMessage: String?
 
-    private var isBricked: Bool { model.state.isBricked }
+    private var isLocked: Bool { model.state.isLocked }
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 12) {
                 Spacer()
 
-                Image(systemName: isBricked ? "lock.fill" : "lock.open")
+                Image(systemName: isLocked ? "lock.fill" : "lock.open")
                     .font(.system(size: 72, weight: .light))
-                    .foregroundStyle(isBricked ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                    .foregroundStyle(isLocked ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
                     .contentTransition(.symbolEffect(.replace))
                     .frame(height: 96)
                     .accessibilityHidden(true)
 
-                Text(isBricked ? "Bricked" : "Unbricked")
+                Text(isLocked ? "Locked" : "Unlocked")
                     .font(.largeTitle.bold())
 
-                if let brickedAt = model.state.brickedAt, isBricked {
-                    Text(brickedAt, style: .timer)
+                if let lockedAt = model.state.lockedAt, isLocked {
+                    Text(lockedAt, style: .timer)
                         .font(.title2.monospacedDigit())
                         .foregroundStyle(.secondary)
                 }
 
                 if let mode = model.activeMode {
-                    if isBricked {
+                    if isLocked {
                         Text(mode.name)
                             .font(.headline)
                             .foregroundStyle(.secondary)
@@ -47,7 +47,7 @@ struct HomeView: View {
                 }
 
                 if let schedule = model.activeSchedule, !schedule.requiresCard {
-                    Text("Unbricks automatically at \(BrickSchedule.timeText(schedule.endMinuteOfDay)).")
+                    Text("Unlocks automatically at \(LockSchedule.timeText(schedule.endMinuteOfDay)).")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -55,7 +55,7 @@ struct HomeView: View {
                 Spacer()
 
                 Button(action: tapCard) {
-                    Text(isBricked ? "Unbrick" : "Brick")
+                    Text(isLocked ? "Unlock" : "Lock It")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
@@ -65,14 +65,6 @@ struct HomeView: View {
                 Text("You'll be asked to tap your card.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
-
-                #if DEBUG
-                Button("Simulate card tap") {
-                    withAnimation { model.simulateCardTap() }
-                }
-                .font(.footnote)
-                .padding(.top, 8)
-                #endif
             }
             .padding(24)
             .toolbar {
@@ -90,7 +82,7 @@ struct HomeView: View {
                     Button("Schedules", systemImage: "clock") {
                         isShowingSchedules = true
                     }
-                    .disabled(isBricked)
+                    .disabled(isLocked)
                 }
             }
             .sheet(isPresented: $isShowingSettings) {
@@ -109,8 +101,8 @@ struct HomeView: View {
         }
     }
 
-    /// Chooses the mode for the next brick. Only shown while unbricked.
-    private func modeMenu(selected: BrickMode) -> some View {
+    /// Chooses the mode for the next lock. Only shown while unlocked.
+    private func modeMenu(selected: LockMode) -> some View {
         Menu {
             Picker("Mode", selection: Binding(
                 get: { selected.id },

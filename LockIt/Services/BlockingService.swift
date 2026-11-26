@@ -10,7 +10,7 @@ struct BlockingService {
     ///
     /// `strictMode` stops the user deleting any app while the shields are up,
     /// which is the only way iOS offers to protect this app from removal.
-    func apply(_ mode: BrickMode, strictMode: Bool) {
+    func apply(_ mode: LockMode, strictMode: Bool) {
         store.application.denyAppRemoval = strictMode ? true : nil
 
         let selection = mode.selection

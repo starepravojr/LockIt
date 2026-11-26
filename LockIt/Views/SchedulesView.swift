@@ -12,7 +12,7 @@ struct SchedulesView: View {
                     ContentUnavailableView(
                         "No schedules",
                         systemImage: "clock",
-                        description: Text("A schedule bricks your iPhone at the same time every day, without you opening LockIt.")
+                        description: Text("A schedule locks your apps at the same time every day, without you opening LockIt.")
                     )
                 } else {
                     List(model.schedules) { schedule in
@@ -41,13 +41,13 @@ struct SchedulesView: View {
         }
     }
 
-    private func modeName(for schedule: BrickSchedule) -> String {
+    private func modeName(for schedule: LockSchedule) -> String {
         model.modes.first { $0.id == schedule.modeID }?.name ?? "Deleted mode"
     }
 }
 
 private struct ScheduleRow: View {
-    let schedule: BrickSchedule
+    let schedule: LockSchedule
     let modeName: String
 
     var body: some View {
@@ -61,7 +61,7 @@ private struct ScheduleRow: View {
     }
 
     private var detail: String {
-        let times = "\(BrickSchedule.timeText(schedule.startMinuteOfDay)) to \(BrickSchedule.timeText(schedule.endMinuteOfDay))"
+        let times = "\(LockSchedule.timeText(schedule.startMinuteOfDay)) to \(LockSchedule.timeText(schedule.endMinuteOfDay))"
         if !schedule.isEnabled { return "\(times), off" }
         return "\(times), \(schedule.requiresCard ? "until card tap" : "ends automatically")"
     }
@@ -72,12 +72,12 @@ private struct ScheduleRow: View {
 struct ScheduleEditorView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
-    @State private var draft: BrickSchedule?
+    @State private var draft: LockSchedule?
     @State private var errorMessage: String?
 
-    private let existing: BrickSchedule?
+    private let existing: LockSchedule?
 
-    init(schedule: BrickSchedule?) {
+    init(schedule: LockSchedule?) {
         existing = schedule
         _draft = State(initialValue: schedule)
     }
@@ -102,8 +102,8 @@ struct ScheduleEditorView: View {
         .errorAlert($errorMessage)
     }
 
-    private func form(for schedule: BrickSchedule) -> some View {
-        let binding = Binding<BrickSchedule>(
+    private func form(for schedule: LockSchedule) -> some View {
+        let binding = Binding<LockSchedule>(
             get: { draft ?? schedule },
             set: { draft = $0 }
         )
@@ -125,8 +125,8 @@ struct ScheduleEditorView: View {
 
             Section("When it ends") {
                 Picker("When it ends", selection: binding.requiresCard) {
-                    Text("Stay bricked until I tap my card").tag(true)
-                    Text("Unbrick automatically").tag(false)
+                    Text("Stay locked until I tap my card").tag(true)
+                    Text("Unlock automatically").tag(false)
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
@@ -161,16 +161,16 @@ struct ScheduleEditorView: View {
         }
     }
 
-    /// The reason it can't be saved, or a warning that saving bricks now.
-    private func note(for schedule: BrickSchedule) -> String? {
+    /// The reason it can't be saved, or a warning that saving locks now.
+    private func note(for schedule: LockSchedule) -> String? {
         if let error = schedule.validationError { return error }
         if schedule.isEnabled, schedule.contains(.now) {
-            return "It's inside this time range right now, so saving will brick your iPhone straight away."
+            return "It's inside this time range right now, so saving will lock your apps straight away."
         }
         return nil
     }
 
-    private func save(_ schedule: BrickSchedule) {
+    private func save(_ schedule: LockSchedule) {
         do {
             try model.saveSchedule(schedule)
             dismiss()
@@ -182,18 +182,18 @@ struct ScheduleEditorView: View {
     /// Edits a minute-of-day value through a time-only date picker.
     private func time(_ minuteOfDay: Binding<Int>) -> Binding<Date> {
         Binding(
-            get: { BrickSchedule.date(forMinuteOfDay: minuteOfDay.wrappedValue) },
-            set: { minuteOfDay.wrappedValue = BrickSchedule.minuteOfDay(for: $0) }
+            get: { LockSchedule.date(forMinuteOfDay: minuteOfDay.wrappedValue) },
+            set: { minuteOfDay.wrappedValue = LockSchedule.minuteOfDay(for: $0) }
         )
     }
 }
 
-extension BrickSchedule {
+extension LockSchedule {
     /// A one-hour schedule starting 15 minutes from now.
-    static func startingSoon(modeID: UUID, now: Date = .now) -> BrickSchedule {
+    static func startingSoon(modeID: UUID, now: Date = .now) -> LockSchedule {
         // Round up to the next whole minute so the start is never in the past.
         let start = (minuteOfDay(for: now) + minimumMinutes + 1) % (24 * 60)
-        return BrickSchedule(
+        return LockSchedule(
             modeID: modeID,
             startMinuteOfDay: start,
             endMinuteOfDay: (start + 60) % (24 * 60)

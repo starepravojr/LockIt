@@ -12,7 +12,7 @@ struct SessionStats: Equatable {
 
     let today: TimeInterval
     let thisWeek: TimeInterval
-    /// The most days in a row with any bricked time.
+    /// The most days in a row with any locked time.
     let longestStreakDays: Int
     let longestSession: TimeInterval
     /// Oldest first, ending today. Always seven entries.

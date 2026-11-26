@@ -1,6 +1,6 @@
 import Foundation
 
-/// Tells the app that the brick state in the App Group changed, including
+/// Tells the app that the lock state in the App Group changed, including
 /// when the monitor extension changed it from another process.
 enum StateChangeSignal {
     /// Posted on `NotificationCenter.default` in the app after `startObserving()`.

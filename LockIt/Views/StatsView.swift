@@ -1,7 +1,7 @@
 import Charts
 import SwiftUI
 
-/// Time bricked today and this week, the longest streak, the last seven days
+/// Time locked today and this week, the longest streak, the last seven days
 /// as a chart, and the session history.
 struct StatsView: View {
     @Environment(AppModel.self) private var model
@@ -16,7 +16,7 @@ struct StatsView: View {
                     ContentUnavailableView(
                         "No sessions yet",
                         systemImage: "chart.bar",
-                        description: Text("Brick your iPhone and your sessions will show up here.")
+                        description: Text("Lock your apps and your sessions will show up here.")
                     )
                 } else {
                     // Recalculated each minute so a running session keeps counting.
@@ -96,7 +96,7 @@ private struct StatTile: View {
     }
 }
 
-/// Hours bricked on each of the last seven days. Tap or drag across the
+/// Hours locked on each of the last seven days. Tap or drag across the
 /// chart to read one day's total.
 private struct WeekChart: View {
     let days: [SessionStats.Day]
@@ -182,7 +182,7 @@ private struct SessionRow: View {
     private var ending: String {
         switch log.endedBy {
         case .card: "ended with card"
-        case .emergency: "Emergency Unbrick"
+        case .emergency: "Emergency Unlock"
         case .schedule: "ended by schedule"
         case .bypassDetected: "bypass detected"
         case nil: "in progress"

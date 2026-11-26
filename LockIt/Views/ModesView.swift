@@ -46,7 +46,7 @@ struct ModesView: View {
         }
     }
 
-    private static func detail(for mode: BrickMode) -> String {
+    private static func detail(for mode: LockMode) -> String {
         if mode.isAllowlist {
             return mode.hasEmptySelection ? "Blocks everything" : "Blocks everything except \(mode.selectionSummary)"
         }

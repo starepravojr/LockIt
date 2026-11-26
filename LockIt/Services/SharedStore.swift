@@ -2,8 +2,10 @@ import Foundation
 
 /// JSON-encoded models in the App Group's UserDefaults, shared with the extensions.
 struct SharedStore {
+    /// These are the names the data is stored under on the device. Some predate
+    /// the Brick to Lock rename; changing one would orphan what is saved there.
     private enum Key {
-        static let brickState = "brickState"
+        static let lockState = "brickState"
         static let modes = "modes"
         static let settings = "settings"
         static let sessionLogs = "sessionLogs"
@@ -19,12 +21,12 @@ struct SharedStore {
         self.defaults = defaults
     }
 
-    var brickState: BrickState {
-        get { read(Key.brickState) ?? BrickState() }
-        nonmutating set { write(newValue, for: Key.brickState) }
+    var lockState: LockState {
+        get { read(Key.lockState) ?? LockState() }
+        nonmutating set { write(newValue, for: Key.lockState) }
     }
 
-    var modes: [BrickMode] {
+    var modes: [LockMode] {
         get { read(Key.modes) ?? [] }
         nonmutating set { write(newValue, for: Key.modes) }
     }
@@ -39,7 +41,7 @@ struct SharedStore {
         nonmutating set { write(newValue, for: Key.sessionLogs) }
     }
 
-    var schedules: [BrickSchedule] {
+    var schedules: [LockSchedule] {
         get { read(Key.schedules) ?? [] }
         nonmutating set { write(newValue, for: Key.schedules) }
     }

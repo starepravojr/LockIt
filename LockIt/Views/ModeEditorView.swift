@@ -5,16 +5,16 @@ import SwiftUI
 /// block list or an allow list.
 struct ModeEditorView: View {
     let title: String
-    let onSave: (BrickMode) -> Void
+    let onSave: (LockMode) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @State private var draft: BrickMode
+    @State private var draft: LockMode
     @State private var isPickerPresented = false
 
-    init(mode: BrickMode?, title: String, onSave: @escaping (BrickMode) -> Void) {
+    init(mode: LockMode?, title: String, onSave: @escaping (LockMode) -> Void) {
         self.title = title
         self.onSave = onSave
-        _draft = State(initialValue: mode ?? BrickMode(name: "Focus"))
+        _draft = State(initialValue: mode ?? LockMode(name: "Focus"))
     }
 
     var body: some View {
@@ -75,7 +75,7 @@ struct ModeEditorView: View {
     }
 }
 
-extension BrickMode {
+extension LockMode {
     /// For example "3 apps, 1 category", or "None".
     var selectionSummary: String {
         func count(_ value: Int, _ singular: String, _ plural: String) -> String? {

@@ -2,7 +2,7 @@ import FamilyControls
 import SwiftUI
 
 /// Chooses between onboarding and the home screen, and watches for the user
-/// revoking Screen Time access while bricked.
+/// revoking Screen Time access while locked.
 struct RootView: View {
     @Environment(AppModel.self) private var model
     @Environment(AuthorizationService.self) private var authorization
@@ -14,9 +14,9 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            // While bricked, stay on Home even if access looks revoked: the
+            // While locked, stay on Home even if access looks revoked: the
             // bypass check below decides what happens next.
-            if model.state.isBricked || isSetUp {
+            if model.state.isLocked || isSetUp {
                 HomeView()
             } else {
                 OnboardingView()
@@ -32,7 +32,7 @@ struct RootView: View {
         .task(id: BypassCheckTrigger(phase: scenePhase, status: authorization.status)) {
             await checkForBypass()
         }
-        // A schedule can brick or unbrick while the app is on screen.
+        // A schedule can lock or unlock while the app is on screen.
         .onReceive(
             NotificationCenter.default.publisher(for: StateChangeSignal.didChange).receive(on: RunLoop.main)
         ) { _ in
@@ -44,7 +44,7 @@ struct RootView: View {
         guard scenePhase == .active else { return }
         model.reload()
         authorization.refresh()
-        guard model.state.isBricked, !authorization.isApproved else { return }
+        guard model.state.isLocked, !authorization.isApproved else { return }
 
         // The status can read as not approved for a moment after a cold
         // launch, so confirm it before charging the user for a bypass. A
@@ -54,7 +54,7 @@ struct RootView: View {
         authorization.refresh()
         guard !authorization.isApproved else { return }
 
-        withAnimation { model.endBrickAfterAccessRevoked() }
+        withAnimation { model.endLockAfterAccessRevoked() }
     }
 }
 

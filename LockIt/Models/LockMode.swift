@@ -2,7 +2,7 @@ import FamilyControls
 import Foundation
 
 /// A named set of apps, categories and websites to block.
-struct BrickMode: Codable, Identifiable, Equatable {
+struct LockMode: Codable, Identifiable, Equatable {
     /// Apple does not shield anything when a block list holds more than this
     /// many individual apps. Categories do not count toward the limit.
     static let maxBlockedApps = 50

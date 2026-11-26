@@ -1,6 +1,6 @@
 import Foundation
 
-/// One bricked session. `end` and `endedBy` are nil while it is still running.
+/// One locked session. `end` and `endedBy` are nil while it is still running.
 struct SessionLog: Codable, Identifiable, Equatable {
     enum EndReason: String, Codable {
         case card

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The paired card, Strict Mode, and Emergency Unbricks.
+/// The paired card, Strict Mode, and Emergency Unlocks.
 struct SettingsView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.dismiss) private var dismiss
@@ -8,14 +8,14 @@ struct SettingsView: View {
     @State private var isConfirmingEmergency = false
     @State private var errorMessage: String?
 
-    private var isBricked: Bool { model.state.isBricked }
+    private var isLocked: Bool { model.state.isLocked }
 
     var body: some View {
         NavigationStack {
             Form {
                 cardSection
                 strictModeSection
-                if model.offersEmergencyUnbrick {
+                if model.offersEmergencyUnlock {
                     emergencySection
                 }
             }
@@ -27,13 +27,13 @@ struct SettingsView: View {
                 }
             }
             .confirmationDialog(
-                "Emergency Unbrick",
+                "Emergency Unlock",
                 isPresented: $isConfirmingEmergency,
                 titleVisibility: .visible
             ) {
-                Button("Unbrick without my card", role: .destructive, action: emergencyUnbrick)
+                Button("Unlock without my card", role: .destructive, action: emergencyUnlock)
             } message: {
-                Text("You have \(model.emergencyUnbricksRemaining) left. This can't be undone.")
+                Text("You have \(model.emergencyUnlocksRemaining) left. This can't be undone.")
             }
             .errorAlert($errorMessage)
         }
@@ -46,11 +46,11 @@ struct SettingsView: View {
                     .monospaced()
             }
             Button("Pair a different card", action: pairCard)
-                .disabled(isBricked || isScanning)
+                .disabled(isLocked || isScanning)
         } header: {
             Text("Card")
         } footer: {
-            Text("You can change cards only while unbricked.")
+            Text("You can change cards only while unlocked.")
         }
     }
 
@@ -60,21 +60,21 @@ struct SettingsView: View {
                 get: { model.settings.strictMode },
                 set: { model.setStrictMode($0) }
             ))
-            .disabled(isBricked)
+            .disabled(isLocked)
         } footer: {
-            Text("While bricked, no app on this iPhone can be deleted, not only LockIt, and Emergency Unbrick is hidden. You can change this only while unbricked.")
+            Text("While locked, no app on this iPhone can be deleted, not only LockIt, and Emergency Unlock is hidden. You can change this only while unlocked.")
         }
     }
 
     private var emergencySection: some View {
         Section {
-            LabeledContent("Remaining", value: "\(model.emergencyUnbricksRemaining)")
-            Button("Emergency Unbrick", role: .destructive) {
+            LabeledContent("Remaining", value: "\(model.emergencyUnlocksRemaining)")
+            Button("Emergency Unlock", role: .destructive) {
                 isConfirmingEmergency = true
             }
-            .disabled(!model.canEmergencyUnbrick)
+            .disabled(!model.canEmergencyUnlock)
         } header: {
-            Text("Emergency Unbricks")
+            Text("Emergency Unlocks")
         } footer: {
             Text("For when you can't get to your card. The count never resets.")
         }
@@ -92,9 +92,9 @@ struct SettingsView: View {
         }
     }
 
-    private func emergencyUnbrick() {
+    private func emergencyUnlock() {
         do {
-            try model.emergencyUnbrick()
+            try model.emergencyUnlock()
             dismiss()
         } catch {
             errorMessage = error.localizedDescription

@@ -9,12 +9,12 @@ final class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
         guard let schedule = schedule(for: activity), schedule.isEnabled,
-              // Bricking can only be undone with the card, so ignore a
+              // Locking can only be undone with the card, so ignore a
               // callback that arrives outside the schedule's own interval.
               schedule.contains(.now, leeway: 2),
               let mode = store.modes.first(where: { $0.id == schedule.modeID })
         else { return }
-        BrickSessionService(store: store).start(mode: mode, scheduleID: schedule.id)
+        LockSessionService(store: store).start(mode: mode, scheduleID: schedule.id)
     }
 
     override func intervalDidEnd(for activity: DeviceActivityName) {
@@ -22,13 +22,13 @@ final class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         guard let schedule = schedule(for: activity), !schedule.requiresCard else { return }
         // Only end the session this schedule started. One started by the
         // card, or by another schedule, stays until its own way out.
-        let state = store.brickState
-        guard state.isBricked, state.scheduleID == schedule.id else { return }
-        BrickSessionService(store: store).end(reason: .schedule)
+        let state = store.lockState
+        guard state.isLocked, state.scheduleID == schedule.id else { return }
+        LockSessionService(store: store).end(reason: .schedule)
     }
 
-    private func schedule(for activity: DeviceActivityName) -> BrickSchedule? {
-        guard let id = BrickSchedule.id(for: activity) else { return nil }
+    private func schedule(for activity: DeviceActivityName) -> LockSchedule? {
+        guard let id = LockSchedule.id(for: activity) else { return nil }
         return store.schedules.first { $0.id == id }
     }
 }

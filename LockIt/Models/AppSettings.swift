@@ -1,6 +1,6 @@
 import Foundation
 
 struct AppSettings: Codable, Equatable {
-    /// While bricked, no app can be deleted and Emergency Unbrick is hidden.
+    /// While locked, no app can be deleted and Emergency Unlock is hidden.
     var strictMode = false
 }

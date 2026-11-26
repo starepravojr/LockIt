@@ -26,7 +26,7 @@ enum NFCScanError: LocalizedError {
         case .timedOut: "No card was found in time."
         case .readFailed: "The card couldn't be read."
         case .unsupportedCard: "Unsupported card"
-        case .wrongCard: "That's not your Brick"
+        case .wrongCard: "That's not your LockIt card"
         case .sessionFailed(let reason): reason
         }
     }
@@ -88,7 +88,7 @@ private final class TagScan: NSObject, NFCTagReaderSessionDelegate {
             }
             let uid = card.identifier.map { String(format: "%02X", $0) }.joined()
             if let expectedUID, uid != expectedUID {
-                session.invalidate(errorMessage: "That's not your Brick")
+                session.invalidate(errorMessage: "That's not your LockIt card")
                 finish(.failure(NFCScanError.wrongCard))
                 return
             }

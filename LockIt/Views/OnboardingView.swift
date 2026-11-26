@@ -45,7 +45,7 @@ private struct PairCardStepView: View {
             VStack(alignment: .leading, spacing: 18) {
                 StepRow(symbol: "creditcard", text: "Use an NTAG215 card. Bank and transit cards won't work.")
                 StepRow(symbol: "iphone.radiowaves.left.and.right", text: "Hold the top back edge of your iPhone against it.")
-                StepRow(symbol: "arrow.triangle.2.circlepath", text: "You can switch to another card later, but only while unbricked.")
+                StepRow(symbol: "arrow.triangle.2.circlepath", text: "You can switch to another card later, but only while unlocked.")
             }
 
             Spacer()
@@ -67,18 +67,6 @@ private struct PairCardStepView: View {
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .disabled(isScanning)
-
-            #if DEBUG
-            Button("Simulate a card (Debug build)") {
-                do {
-                    try model.simulatePairCard()
-                } catch {
-                    errorMessage = error.localizedDescription
-                }
-            }
-            .font(.footnote)
-            .frame(maxWidth: .infinity)
-            #endif
         }
         .padding(24)
         .errorAlert($errorMessage)

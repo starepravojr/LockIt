@@ -1,8 +1,8 @@
 import DeviceActivity
 import Foundation
 
-/// Bricks with a mode at the same time every day.
-struct BrickSchedule: Codable, Identifiable, Equatable {
+/// Locks the apps with a mode at the same time every day.
+struct LockSchedule: Codable, Identifiable, Equatable {
     /// Apple refuses to monitor an interval shorter than this.
     static let minimumMinutes = 15
     /// Apple allows an app at most this many monitored activities.
@@ -16,8 +16,8 @@ struct BrickSchedule: Codable, Identifiable, Equatable {
     var startMinuteOfDay: Int
     /// Minutes after midnight. At or before the start means the next day.
     var endMinuteOfDay: Int
-    /// When the interval ends: stay bricked until the card is tapped (true)
-    /// or unbrick automatically (false).
+    /// When the interval ends: stay locked until the card is tapped (true)
+    /// or unlock automatically (false).
     var requiresCard = true
     var isEnabled = true
 

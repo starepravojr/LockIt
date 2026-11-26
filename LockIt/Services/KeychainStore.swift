@@ -1,14 +1,16 @@
 import Foundation
 import Security
 
-/// The paired card and the Emergency Unbrick counter. They live in the
+/// The paired card and the Emergency Unlock counter. They live in the
 /// Keychain because its items outlast deleting and reinstalling the app.
 struct KeychainStore {
-    static let initialEmergencyUnbricks = 5
+    static let initialEmergencyUnlocks = 5
 
+    /// The names the items are stored under. They outlast reinstalls, so the
+    /// counter keeps the name it had before the Brick to Lock rename.
     private enum Account {
         static let pairedCardUID = "pairedCardUID"
-        static let emergencyUnbricks = "emergencyUnbricksRemaining"
+        static let emergencyUnlocks = "emergencyUnbricksRemaining"
     }
 
     private let service: String
@@ -26,12 +28,12 @@ struct KeychainStore {
         try write(Data(uid.utf8), for: Account.pairedCardUID)
     }
 
-    /// Starts at `initialEmergencyUnbricks`. If the Keychain cannot be read,
+    /// Starts at `initialEmergencyUnlocks`. If the Keychain cannot be read,
     /// this reports 0 rather than hand out a fresh allowance.
-    var emergencyUnbricksRemaining: Int {
+    var emergencyUnlocksRemaining: Int {
         do {
-            guard let data = try read(Account.emergencyUnbricks) else {
-                return Self.initialEmergencyUnbricks
+            guard let data = try read(Account.emergencyUnlocks) else {
+                return Self.initialEmergencyUnlocks
             }
             return String(data: data, encoding: .utf8).flatMap(Int.init) ?? 0
         } catch {
@@ -39,8 +41,8 @@ struct KeychainStore {
         }
     }
 
-    func setEmergencyUnbricksRemaining(_ count: Int) throws {
-        try write(Data(String(max(0, count)).utf8), for: Account.emergencyUnbricks)
+    func setEmergencyUnlocksRemaining(_ count: Int) throws {
+        try write(Data(String(max(0, count)).utf8), for: Account.emergencyUnlocks)
     }
 
     /// Returns nil when there is no item for the account.
