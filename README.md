@@ -9,6 +9,7 @@ It is a personal build: there is no App Store version. You install it on your ow
 ## What it does
 
 - **Card-gated blocking.** Lock and unlock with one paired NFC card. Any other tag is rejected.
+- **Tap to lock.** With a one-time Shortcuts automation, holding your phone to the card locks your apps. You don't open LockIt or press anything.
 - **Modes.** Named sets of apps, categories and websites. A mode can block what you pick, or block everything except what you pick.
 - **Schedules.** Lock at the same time every day without opening the app. A schedule can unlock by itself at the end, or stay locked until you tap your card.
 - **Emergency Unlocks.** Five ways out for when you can't reach your card. The count never resets, and it survives deleting the app.
@@ -82,6 +83,36 @@ On first launch LockIt walks you through three steps:
 
 Then tap **Lock It** and tap your card.
 
+## Lock by tapping the card
+
+By default you open LockIt, press **Lock It**, and tap the card. With a Shortcuts automation you can skip the first two: hold the phone to the card and it locks.
+
+### Set it up once
+
+1. Open the **Shortcuts** app and go to the **Automation** tab.
+2. Tap **+** to create a new automation and choose **NFC**.
+3. Tap **Scan**, hold the phone to your LockIt card, and give the tag a name.
+4. Choose **Run Immediately**, and turn off **Notify When Run** if you don't want a banner each time.
+5. Tap **Next**, choose **New Blank Automation**, then **Add Action**.
+6. Search for **Card Tapped**, pick the one from LockIt, and tap **Done**.
+
+The exact wording of these screens varies a little between iOS versions.
+
+### What a tap does
+
+| Your apps are | Tapping the card |
+|---|---|
+| Unlocked | Locks them straight away, then opens LockIt to show that they are locked. |
+| Locked | Opens LockIt and starts the card scan. Keep the phone on the card for a moment and it unlocks. |
+
+Unlocking goes through the app on purpose. Shortcuts does not tell LockIt which card was scanned, so an unlock that ran in the background could be triggered by any shortcut with no card at all. LockIt's own scan reads the card and checks it is the paired one.
+
+### Good to know
+
+- The phone has to be unlocked with the screen on. iOS does not run NFC automations from a locked phone.
+- After a lock or unlock, LockIt ignores further taps for five seconds, so resting the phone on the card does not flip it back.
+- The automation locks with whichever mode is chosen on LockIt's home screen.
+
 ## Keeping it installed
 
 An app installed from Xcode stops opening when its provisioning profile expires, which is one year after the first build. To renew it, connect the phone and press Run again. Your modes, schedules, paired card and Emergency Unlock count are kept.
@@ -107,7 +138,7 @@ Use an Emergency Unlock in the app's Settings. If Strict Mode is on, that option
 
 ## Limits worth knowing
 
-- A card tap only works from inside the app. iOS does not let a background tap run the app's code.
+- iOS does not let an app react to a card by itself. Tapping without opening LockIt first needs the Shortcuts automation described above.
 - A card's ID can be copied onto a special "magic" tag. This is a self-discipline tool, not a security product.
 - Only the iPhone is blocked. iPads and Macs are not.
 - Schedules repeat every day and must last at least 15 minutes, which is an iOS limit.
@@ -118,6 +149,7 @@ Use an Emergency Unlock in the app's Settings. If Strict Mode is on, that option
 project.yml       Source of truth for the Xcode project (XcodeGen)
 LockIt/           The app
   App/            App entry point, shared identifiers, app state
+  Intents/        The "Card Tapped" action for Shortcuts
   Models/         Modes, schedules, lock state, session log
   Services/       Screen Time shields, NFC, Keychain, schedules, stats
   Views/          SwiftUI screens

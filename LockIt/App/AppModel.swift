@@ -6,6 +6,10 @@ import Observation
 @MainActor
 @Observable
 final class AppModel {
+    /// One instance for the whole app process, so the screens and the
+    /// Shortcuts action act on the same state.
+    static let shared = AppModel()
+
     private(set) var state: LockState
     private(set) var modes: [LockMode]
     private(set) var schedules: [LockSchedule]
@@ -14,12 +18,17 @@ final class AppModel {
     private(set) var emergencyUnlocksRemaining: Int
     /// A message the user has to see, such as a detected bypass.
     private(set) var notice: String?
+    /// When the Shortcuts action last asked for a card scan. Home starts the
+    /// scan once the app is on screen.
+    private(set) var scanRequestedAt: Date?
 
     @ObservationIgnored private let store: SharedStore
     @ObservationIgnored private let keychain: KeychainStore
     @ObservationIgnored private let session: LockSessionService
     @ObservationIgnored private let scheduleService = ScheduleService()
     @ObservationIgnored private let nfc = NFCService()
+    /// When a card last locked or unlocked, by either route.
+    @ObservationIgnored private var lastCardActionAt: Date?
 
     init(store: SharedStore = SharedStore(), keychain: KeychainStore = KeychainStore()) {
         self.store = store
@@ -166,6 +175,54 @@ final class AppModel {
         toggleLock()
     }
 
+    // MARK: - Card tap reported by Shortcuts
+    //
+    // A Shortcuts automation fires when the card is scanned, but it does not
+    // say which card. So this route may only lock. Unlocking always goes
+    // through `tapCard()`, which reads the card and checks it is the paired one.
+
+    /// Locks with the chosen mode and returns true. Returns false, changing
+    /// nothing, if already locked or the card only just acted.
+    @discardableResult
+    func lockFromShortcut() throws -> Bool {
+        reload()
+        guard !state.isLocked, !isInCardCooldown else { return false }
+        guard pairedCardUID != nil, activeMode != nil else { throw CardTapError.setupIncomplete }
+        toggleLock()
+        return state.isLocked
+    }
+
+    /// Asks Home to start the verified card scan. Returns false when the tap
+    /// should be ignored because the card only just acted.
+    func requestScanFromShortcut() -> Bool {
+        guard !isInCardCooldown else { return false }
+        scanRequestedAt = .now
+        return true
+    }
+
+    func cancelScanRequest() {
+        scanRequestedAt = nil
+    }
+
+    /// Returns true once for each fresh request. A request left unanswered
+    /// for a while is dropped rather than starting a scan out of nowhere.
+    func consumeScanRequest() -> Bool {
+        guard let requestedAt = scanRequestedAt else { return false }
+        scanRequestedAt = nil
+        return Date.now.timeIntervalSince(requestedAt) < Self.scanRequestLifetime
+    }
+
+    /// The phone is usually still on the card just after it locks or unlocks,
+    /// and iOS can report that same card to Shortcuts again. Without this
+    /// pause an unlock would be followed at once by a new lock.
+    private var isInCardCooldown: Bool {
+        guard let lastCardActionAt else { return false }
+        return Date.now.timeIntervalSince(lastCardActionAt) < Self.cardCooldown
+    }
+
+    private static let cardCooldown: TimeInterval = 5
+    private static let scanRequestLifetime: TimeInterval = 30
+
     /// Ends the block without the card and spends one Emergency Unlock.
     /// The counter is saved first, so a failed save leaves the block in place.
     func emergencyUnlock() throws {
@@ -201,6 +258,7 @@ final class AppModel {
 
     /// What a successful read of the paired card does.
     private func toggleLock() {
+        lastCardActionAt = .now
         if state.isLocked {
             unlock(endedBy: .card)
         } else {

@@ -4,6 +4,7 @@ import SwiftUI
 /// and the one button that starts a card scan.
 struct HomeView: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.scenePhase) private var scenePhase
     @State private var isShowingModes = false
     @State private var isShowingSchedules = false
     @State private var isShowingStats = false
@@ -54,7 +55,9 @@ struct HomeView: View {
 
                 Spacer()
 
-                Button(action: tapCard) {
+                Button {
+                    tapCard()
+                } label: {
                     Text(isLocked ? "Unlock" : "Lock It")
                         .frame(maxWidth: .infinity)
                 }
@@ -98,6 +101,12 @@ struct HomeView: View {
                 StatsView()
             }
             .errorAlert($errorMessage)
+            // The Shortcuts action can ask for a scan before the app is on
+            // screen, so check when the request arrives and when the app
+            // becomes active.
+            .onAppear(perform: startRequestedScan)
+            .onChange(of: scenePhase) { startRequestedScan() }
+            .onChange(of: model.scanRequestedAt) { startRequestedScan() }
         }
     }
 
@@ -127,10 +136,19 @@ struct HomeView: View {
         .accessibilityLabel("Mode: \(selected.name)")
     }
 
-    private func tapCard() {
+    /// Starts the scan the Shortcuts action asked for, once the app is active.
+    private func startRequestedScan() {
+        guard scenePhase == .active, !isScanning, model.consumeScanRequest() else { return }
+        tapCard(after: .milliseconds(300))
+    }
+
+    /// `delay` lets the app finish coming to the foreground, since iOS
+    /// refuses an NFC session from an app that is not yet active.
+    private func tapCard(after delay: Duration = .zero) {
         isScanning = true
         Task {
             do {
+                if delay > .zero { try? await Task.sleep(for: delay) }
                 try await model.tapCard()
             } catch {
                 errorMessage = error.localizedDescription

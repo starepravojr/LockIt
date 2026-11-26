@@ -7,6 +7,9 @@ import Observation
 @MainActor
 @Observable
 final class AuthorizationService {
+    /// One instance for the whole app process.
+    static let shared = AuthorizationService()
+
     private(set) var status: AuthorizationStatus
 
     @ObservationIgnored private let center = AuthorizationCenter.shared
@@ -35,5 +38,18 @@ final class AuthorizationService {
 
     func refresh() {
         status = center.authorizationStatus
+    }
+
+    /// Whether access is approved, allowing a moment for the status to load.
+    /// It can read as not approved just after the app is launched in the
+    /// background, which is how a Shortcuts action usually finds it.
+    func waitUntilApproved(timeout: Duration = .seconds(2)) async -> Bool {
+        let deadline = ContinuousClock.now + timeout
+        while true {
+            refresh()
+            if isApproved { return true }
+            if ContinuousClock.now >= deadline { return false }
+            try? await Task.sleep(for: .milliseconds(150))
+        }
     }
 }
